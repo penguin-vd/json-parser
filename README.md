@@ -31,7 +31,7 @@ This parser depends on the following external libraries:
 
 1. Clone the repository with dependencies:
 ```bash
-git clone <your-repo-url>
+git clone git@github.com:penguin-vd/json-parser.git
 cd json-parser
 ```
 
