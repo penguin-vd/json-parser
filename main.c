@@ -1,7 +1,4 @@
 #include "json.h"
-#include <stdbool.h>
-#include <stdio.h>
-#include <string.h>
 #define NOB_IMPLEMENTATION
 #define NOB_STRIP_PREFIX
 #include "thirdparty/nob.h"
