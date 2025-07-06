@@ -2,16 +2,16 @@
 #include "arraylist.h"
 
 typedef struct HashNode {
-    char *key;
-    void *value;
-    struct HashNode *next;
+  char *key;
+  void *value;
+  struct HashNode *next;
 } HashNode;
 
 typedef struct {
-    int capacity;
-    int count;
-    HashNode **buckets;
-    ArrayList keys;
+  int capacity;
+  int count;
+  HashNode **buckets;
+  ArrayList keys;
 } Hashmap;
 
 void init_hashmap(Hashmap *h, int capacity);

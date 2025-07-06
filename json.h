@@ -4,35 +4,41 @@
 #include "hashmap.h"
 #include "thirdparty/jimp.h"
 
+typedef enum { JSON_OBJECT, JSON_NUMBER, JSON_STRING, JSON_ARRAY, JSON_BOOLEAN, JSON_NULL } JsonType;
 typedef struct {
-    void (*print)(void *self);
+  char *(*json_encode)(void *self);
+  JsonType type;
 } JsonObjectBase;
 
 typedef struct {
-    void (*print)(void *self);
-    Hashmap *map;
+  char *(*json_encode)(void *self);
+  Hashmap *map;
+  JsonType type;
 } JsonObject;
 
 typedef struct {
-    void (*print)(void *self);
-    double *number;
+  char *(*json_encode)(void *self);
+  double *number;
+  JsonType type;
 } JsonNumber;
 
 typedef struct {
-    void (*print)(void *self);
-    char *string;
+  char *(*json_encode)(void *self);
+  char *string;
+  JsonType type;
 } JsonString;
 
 typedef struct {
-    void (*print)(void *self);
-    ArrayList *array;
+  char *(*json_encode)(void *self);
+  ArrayList *array;
+  JsonType type;
 } JsonArray;
 
 typedef struct {
-    void (*print)(void *self);
-    bool *value;
+  char *(*json_encode)(void *self);
+  bool *value;
+  JsonType type;
 } JsonBool;
 
-typedef enum { JSON_OBJECT, JSON_NUMBER, JSON_STRING, JSON_ARRAY } JsonType;
-
 JsonObjectBase *json_parse(Jimp *jimp);
+void json_free_object(JsonObjectBase* obj);

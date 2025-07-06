@@ -5,7 +5,7 @@
 #include <string.h>
 
 ArrayList* array_create(size_t element_size) {
-    ArrayList *array = malloc(sizeof(ArrayList));
+    ArrayList* array = malloc(sizeof(ArrayList));
     array->capacity = 0;
     array->count = 0;
     array->element_size = element_size;
@@ -13,7 +13,7 @@ ArrayList* array_create(size_t element_size) {
     return array;
 }
 
-void array_push(ArrayList *array, void* data) {
+void array_push(ArrayList* array, void* data) {
     if (array->capacity == 0) {
         array->capacity = 256;
         array->items = malloc(array->element_size * array->capacity);
@@ -23,20 +23,20 @@ void array_push(ArrayList *array, void* data) {
         }
     } else if (array->capacity == array->count) {
         array->capacity *= 2;
-        void *new_items = realloc(array->items, array->element_size * array->capacity);
+        void* new_items = realloc(array->items, array->element_size * array->capacity);
         if (!new_items) {
             fprintf(stderr, "Memory reallocation failed\n");
             exit(1);
         }
         array->items = new_items;
     }
-    
+
     // Copy the data
     memcpy((char*)array->items + (array->count * array->element_size), data, array->element_size);
     array->count++;
 }
 
-void array_destroy(ArrayList *array) {
+void array_destroy(ArrayList* array) {
     if (array->items) {
         free(array->items);
         array->items = NULL;
@@ -45,12 +45,11 @@ void array_destroy(ArrayList *array) {
     array->count = 0;
 }
 
-void array_inspect(ArrayList *array) {
-    printf("[INFO]: array = (count: %d, capacity: %d)\n", array->count,
-           array->capacity);
+void array_inspect(ArrayList* array) {
+    printf("[INFO]: array = (count: %d, capacity: %d)\n", array->count, array->capacity);
 }
 
-void array_append(ArrayList *array, char *str) {
+void array_append(ArrayList* array, char* str) {
     if (!str)
         return;
 
@@ -60,6 +59,4 @@ void array_append(ArrayList *array, char *str) {
     }
 }
 
-void print_array(ArrayList *array) {
-    printf("%.*s\n", array->count, (char *)array->items);
-}
+void print_array(ArrayList* array) { printf("%.*s\n", array->count, (char*)array->items); }
