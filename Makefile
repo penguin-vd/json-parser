@@ -1,10 +1,10 @@
 CC = cc
-CFLAGS = -Wall -Wextra -std=c99 -O2
+CFLAGS = -Wall -Wextra -std=c99 -g
 TARGET = main
 SOURCES = arraylist.c hashmap.c json.c main.c
 BUILD_DIR = build
 OBJECTS = $(SOURCES:%.c=$(BUILD_DIR)/%.o)
-HEADERS = arraylist.h hashmap.h jimp.h thirdparty/json.h thirdparty/nob.h
+HEADERS = arraylist.h hashmap.h json.h thirdparty/jimp.h thirdparty/nob.h
 
 all: $(TARGET)
 
